@@ -6,18 +6,18 @@ import azure.functions as func
 def main(req: func.HttpRequest, outputblob: func.Out[bytes]) -> func.HttpResponse:
     logging.info('Python HTTP trigger function processed a request.')
 
-    var1 = str(req.get_body)
+    var1 = str(req.get_body())
     logging.info(var1)
 # test commit
-    try:
-        req_body = req.get_json()
-    except ValueError:
-        logging.info('Error reading input json')
-        pass
+    # try:
+    #     req_body = req.get_json()
+    # except ValueError:
+    #     logging.info('Error reading input json')
+    #     pass
 
-    input_dict = req_body
+    input_dict = var1
 
     output_json = json.dumps(input_dict)
     outputblob.set(output_json)
 
-    return func.HttpResponse(body="success")
+    return "success"
