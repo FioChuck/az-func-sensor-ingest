@@ -6,7 +6,7 @@ import azure.functions as func
 def main(req: func.HttpRequest, outputblob: func.Out[bytes]) -> func.HttpResponse:
     logging.info('Python HTTP trigger function processed a request.')
 
-    var1 = req.get_json
+    var1 = req.get_json()
     logging.info(var1)
 
 # test commit
