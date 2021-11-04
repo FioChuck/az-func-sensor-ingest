@@ -1,24 +1,27 @@
 import logging
 import json
 import azure.functions as func
-
+import ast
 
 def main(req: func.HttpRequest, outputblob: func.Out[bytes]) -> func.HttpResponse:
     logging.info('Python HTTP trigger function processed a request.')
+    logging.info('http body: ' + str(req.get_body()))
 
-    var1 = req.get_body()
-    logging.info(str(var1))
+    var1 = '{"' + str(req.get_body())\
+    .replace("b","")\
+    .replace('"', '')\
+    .replace("'", '')\
+    .replace(",", '","')\
+    .replace("=", '":"')\
+    .replace("&", '","')\
+    .replace("PASSKEY:", 'PASSKEY":"') + '"}'
 
-# test commit
-    # try:
-    #     req_body = req.get_json()
-    # except ValueError:
-    #     logging.info('Error reading input json')
-    #     pass
+    convertedDict = json.loads(var1)
 
-    input_dict = var1
+    convertedString = json.dumps(convertedDict)
+    logging.info('json string: ' + convertedString)
 
-    output_json = json.dumps(input_dict)
-    outputblob.set(output_json)
-
+    outputblob.set(convertedString)
+    logging.info('job complete')
+    
     return "success"
