@@ -23,5 +23,5 @@ def main(req: func.HttpRequest, outputblob: func.Out[bytes]) -> func.HttpRespons
 
     outputblob.set(convertedString)
     logging.info('job complete')
-    
+
     return "success"
