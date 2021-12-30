@@ -15,7 +15,7 @@
       "name": "outputblob",
       "type": "blob",
       "dataType": "binary",
-      "path": "sensor-data/ecowitt/{rand-guid}.csv",
+      "path": "sensor-data/ecowitt/{Date}/{rand-guid}.csv",
       "connection": "ADLSCONNECTIONSTRING",
       "direction": "out"
     },
