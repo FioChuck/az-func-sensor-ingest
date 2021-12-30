@@ -20,6 +20,15 @@
       "direction": "out"
     },
     {
+      "type": "cosmosDB",
+      "direction": "out",
+      "name": "doc",
+      "databaseName": "telemetry",
+      "collectionName": "meteorology",
+      "createIfNotExists": "false",
+      "connectionStringSetting": "AzureCosmosDBConnectionString"
+    },
+    {
       "type": "http",
       "direction": "out",
       "name": "$return"
