@@ -12,14 +12,6 @@
       ]
     },
     {
-      "name": "outputblob",
-      "type": "blob",
-      "dataType": "binary",
-      "path": "sensor-data/ecowitt/{DateTime}.csv",
-      "connection": "ADLSCONNECTIONSTRING",
-      "direction": "out"
-    },
-    {
       "type": "cosmosDB",
       "direction": "out",
       "name": "doc",
