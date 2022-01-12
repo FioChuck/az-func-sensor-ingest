@@ -1,35 +1,23 @@
 import logging
 import json
 import azure.functions as func
-import ast
+from .functions.EcoWittPrep import *
 
 def main(req: func.HttpRequest, doc: func.Out[func.Document]) -> func.HttpResponse:
     logging.info('Python HTTP trigger function processed a request.')
-    logging.info('http body: ' + str(req.get_body()))
 
-    var1 = '{"' + str(req.get_body())\
-    .replace("b","")\
-    .replace('"', '')\
-    .replace("'", '')\
-    .replace(",", '","')\
-    .replace("=", '":"')\
-    .replace("&", '","')\
-    .replace("PASSKEY:", 'PASSKEY":"') + '"}'
+    input_str = str(req.get_body())
+    logging.info('http body: ' + input_str)
 
-    convertedDict = json.loads(var1)
-
-    convertedString = json.dumps(convertedDict)
+    test =  str_map(input_str)
+    
+    ## Logging only
+    convertedString = json.dumps(test)
     logging.info('json string: ' + convertedString)
 
-    # outputblob.set(convertedString)
-    # logging.info('job complete')
     newdocs = func.DocumentList() 
-    newproduct_dict = {
-        "id": "testid",
-        "name": "testname"
-    }
-    newdocs.append(func.Document.from_dict(convertedDict))
+
+    newdocs.append(func.Document.from_dict(test))
     doc.set(newdocs)
 
-
-    return "success"
+    return 'success'
