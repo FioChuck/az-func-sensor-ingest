@@ -9,15 +9,18 @@ def main(req: func.HttpRequest, doc: func.Out[func.Document]) -> func.HttpRespon
     input_str = str(req.get_body())
     logging.info('http body: ' + input_str)
 
-    test =  str_map(input_str)
-    
+    output_dict =  str_map(input_str)
+
     ## Logging only
-    convertedString = json.dumps(test)
+    convertedString = json.dumps(output_dict, default=str)
     logging.info('json string: ' + convertedString)
 
     newdocs = func.DocumentList() 
 
-    newdocs.append(func.Document.from_dict(test))
+    newdocs.append(func.Document.from_dict(output_dict))
+
+    print(newdocs.data)
+
     doc.set(newdocs)
 
     return 'success'
