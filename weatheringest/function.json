@@ -6,6 +6,15 @@
       "type": "timerTrigger",
       "direction": "in",
       "schedule": "0 */5 * * * *"
+    },
+    {
+      "type": "cosmosDB",
+      "direction": "out",
+      "name": "doc",
+      "databaseName": "telemetry",
+      "collectionName": "openweathermap",
+      "createIfNotExists": "false",
+      "connectionStringSetting": "AzureCosmosDBConnectionString"
     }
   ]
 }
