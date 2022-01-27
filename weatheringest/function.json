@@ -10,9 +10,18 @@
     {
       "type": "cosmosDB",
       "direction": "out",
-      "name": "doc",
+      "name": "city",
       "databaseName": "telemetry",
       "collectionName": "openweathermap-city",
+      "createIfNotExists": "false",
+      "connectionStringSetting": "AzureCosmosDBConnectionString"
+    },
+    {
+      "type": "cosmosDB",
+      "direction": "out",
+      "name": "dt",
+      "databaseName": "telemetry",
+      "collectionName": "openweathermap-dt",
       "createIfNotExists": "false",
       "connectionStringSetting": "AzureCosmosDBConnectionString"
     }

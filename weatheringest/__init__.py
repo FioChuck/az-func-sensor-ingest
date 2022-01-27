@@ -5,7 +5,7 @@ import os
 import azure.functions as func
 
 
-def main(mytimer: func.TimerRequest, doc: func.Out[func.Document]) -> None:
+def main(mytimer: func.TimerRequest, city: func.Out[func.Document], dt: func.Out[func.Document]) -> None:
 
     if mytimer.past_due:
         logging.info('The timer is past due!')
@@ -51,4 +51,6 @@ def main(mytimer: func.TimerRequest, doc: func.Out[func.Document]) -> None:
     newdocs = func.DocumentList() 
     newdocs.append(func.Document.from_dict(dict1))
     newdocs.append(func.Document.from_dict(dict2))
-    doc.set(newdocs)
+
+    city.set(newdocs) # save newdocs to city container
+    dt.set(newdocs) # save newdocs to dt container
