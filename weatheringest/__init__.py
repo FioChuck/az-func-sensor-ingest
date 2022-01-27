@@ -50,7 +50,5 @@ def main(mytimer: func.TimerRequest, doc: func.Out[func.Document]) -> None:
 
     newdocs = func.DocumentList() 
     newdocs.append(func.Document.from_dict(dict1))
-
-    print(newdocs.data)
-
+    newdocs.append(func.Document.from_dict(dict2))
     doc.set(newdocs)
