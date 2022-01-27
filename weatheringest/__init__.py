@@ -25,8 +25,9 @@ def main(mytimer: func.TimerRequest, doc: func.Out[func.Document]) -> None:
     del dict1['id'] # remove id - interferes with cosmos db id
     del dict1['name'] # remove name - replace with city
 
-    dict1['state'] = 'Georgia'
-    dict1['city'] = 'Atlanta'
+    dict1['location'] = {
+    'state': 'Georgia',
+    'city': 'Atlanta'}
 ####
 
 ## savannah ##
@@ -34,8 +35,9 @@ def main(mytimer: func.TimerRequest, doc: func.Out[func.Document]) -> None:
     del dict2['id'] # remove id - interferes with cosmos db id
     del dict2['name'] # remove name - replace with city
 
-    dict2['state'] = 'Georgia'
-    dict2['city'] = 'Savannah'
+    dict2['location'] = {
+    'state': 'Georgia',
+    'city': 'Atlanta'}
 ####
 
 ## for logging only
