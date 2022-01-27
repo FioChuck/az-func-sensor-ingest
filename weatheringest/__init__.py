@@ -22,22 +22,30 @@ def main(mytimer: func.TimerRequest, city: func.Out[func.Document], dt: func.Out
 
 ## atlanta ##
     dict1 = response1.json()
+    weather = dict1['weather'][0]
     del dict1['id'] # remove id - interferes with cosmos db id
     del dict1['name'] # remove name - replace with city
+    del dict1['weather']
 
     dict1['location'] = {
     'state': 'Georgia',
     'city': 'Atlanta'}
+
+    dict1['weather'] = weather
 ####
 
 ## savannah ##
     dict2 = response2.json()
+    weather = dict2['weather'][0]
     del dict2['id'] # remove id - interferes with cosmos db id
     del dict2['name'] # remove name - replace with city
+    del dict2['weather']
 
     dict2['location'] = {
     'state': 'Georgia',
     'city': 'Savannah'}
+
+    dict2['weather'] = weather
 ####
 
 ## for logging only
