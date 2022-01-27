@@ -17,8 +17,8 @@ def main(mytimer: func.TimerRequest, doc: func.Out[func.Document]) -> None:
     payload = ""
     headers = {}
 
-    response1 = requests.request("GET", url1, headers=headers, data=payload)
-    response2 = requests.request("GET", url2, headers=headers, data=payload)
+    response1 = requests.request("GET", url1, headers=headers, data=payload) # atlanta id
+    response2 = requests.request("GET", url2, headers=headers, data=payload) # savannah id
 
 ## atlanta ##
     dict1 = response1.json()
@@ -37,7 +37,7 @@ def main(mytimer: func.TimerRequest, doc: func.Out[func.Document]) -> None:
 
     dict2['location'] = {
     'state': 'Georgia',
-    'city': 'Atlanta'}
+    'city': 'Savannah'}
 ####
 
 ## for logging only
