@@ -12,7 +12,7 @@
       "direction": "out",
       "name": "doc",
       "databaseName": "telemetry",
-      "collectionName": "openweathermap",
+      "collectionName": "openweathermap-city",
       "createIfNotExists": "false",
       "connectionStringSetting": "AzureCosmosDBConnectionString"
     }
