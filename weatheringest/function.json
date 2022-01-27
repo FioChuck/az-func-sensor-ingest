@@ -24,6 +24,15 @@
       "collectionName": "openweathermap-dt",
       "createIfNotExists": "false",
       "connectionStringSetting": "AzureCosmosDBConnectionString"
+    },
+    {
+      "type": "cosmosDB",
+      "direction": "out",
+      "name": "description",
+      "databaseName": "telemetry",
+      "collectionName": "openweathermap-description",
+      "createIfNotExists": "false",
+      "connectionStringSetting": "AzureCosmosDBConnectionString"
     }
   ]
 }
