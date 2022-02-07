@@ -33,6 +33,14 @@
       "collectionName": "openweathermap-description",
       "createIfNotExists": "false",
       "connectionStringSetting": "AzureCosmosDBConnectionString"
+    },
+    {
+      "name": "outputblob",
+      "type": "blob",
+      "dataType": "binary",
+      "path": "sensor-data/ecowitt/test.json",
+      "connection": "ADLSCONNECTIONSTRING",
+      "direction": "out"
     }
   ]
 }
