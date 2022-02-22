@@ -12,6 +12,24 @@
       ]
     },
     {
+      "type": "cosmosDB",
+      "direction": "out",
+      "name": "ex_emb",
+      "databaseName": "telemetry",
+      "collectionName": "climate_emb",
+      "createIfNotExists": "false",
+      "connectionStringSetting": "AzureCosmosDBConnectionString"
+    },
+    {
+      "type": "cosmosDB",
+      "direction": "out",
+      "name": "ex_ref",
+      "databaseName": "telemetry",
+      "collectionName": "climate_ref",
+      "createIfNotExists": "false",
+      "connectionStringSetting": "AzureCosmosDBConnectionString"
+    },
+    {
       "type": "http",
       "direction": "out",
       "name": "$return"
