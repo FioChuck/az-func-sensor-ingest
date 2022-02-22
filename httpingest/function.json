@@ -28,11 +28,6 @@
       "collectionName": "climate_ref",
       "createIfNotExists": "false",
       "connectionStringSetting": "AzureCosmosDBConnectionString"
-    },
-    {
-      "type": "http",
-      "direction": "out",
-      "name": "$return"
     }
   ]
 }

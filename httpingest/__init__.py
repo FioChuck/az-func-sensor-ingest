@@ -4,7 +4,7 @@ from .functions.EcoWittPrep import *
 import pytz
 from datetime import datetime
 
-def main(req: func.HttpRequest) -> func.HttpResponse:
+def main(req: func.HttpRequest, ex_emb: func.Out[func.Document], ex_ref: func.Out[func.Document]) -> func.HttpResponse:
     # , ex_emb: func.Out[func.Document], ex_ref: func.Out[func.Document]
     logging.info('Python HTTP trigger function processed a request.')
 
