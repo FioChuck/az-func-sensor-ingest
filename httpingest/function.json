@@ -14,9 +14,9 @@
     {
       "type": "cosmosDB",
       "direction": "out",
-      "name": "doc",
+      "name": "ex_emb",
       "databaseName": "telemetry",
-      "collectionName": "climate",
+      "collectionName": "climate_emb",
       "createIfNotExists": "false",
       "connectionStringSetting": "AzureCosmosDBConnectionString"
     },
