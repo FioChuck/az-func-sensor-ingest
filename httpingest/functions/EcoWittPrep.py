@@ -29,7 +29,6 @@ def str_map_emb(input_str,timestr):
     }
 
     outputDict = {
-        'doctype' : 'station',
         'stationtype' : str(convertedDict['stationtype']),
         'eventtime' : str(convertedDict['dateutc']),
         'processingtime' : timestr,
@@ -39,7 +38,8 @@ def str_map_emb(input_str,timestr):
         'aromasin' : float(convertedDict['aromasin']),
         'freq' : str(convertedDict['freq']),
         'model' : str(convertedDict['model']),
-        'soilsensors' : sensorDict
+        'soilsensors' : sensorDict,
+        'id' : timestr + 'station' + '0'
     }
    
     return outputDict
@@ -48,17 +48,6 @@ def str_map_ref(input_str,timestr):
 
     convertedDict = str_to_dict(input_str)
 
-    str1 = '{"' + str1\
-    .replace("b","")\
-    .replace('"', '')\
-    .replace("'", '')\
-    .replace(",", '","')\
-    .replace("=", '":"')\
-    .replace("&", '","')\
-    .replace("PASSKEY:", 'PASSKEY":"') + '"}'
-
-    convertedDict = json.loads(str1)
-
     sensorDict1 = {
         'doctype' : 'sensor',
         'sensorid' : '1',
@@ -66,6 +55,7 @@ def str_map_ref(input_str,timestr):
         'processingtime' : timestr,
         'soilmoisture' : float(convertedDict['soilmoisture1']),
         'soilatt' : float(convertedDict['soilatt1']),
+        'id' : timestr + 'sensor' + '1'
     }
 
     sensorDict2 = {
@@ -75,6 +65,7 @@ def str_map_ref(input_str,timestr):
         'processingtime' : timestr,
         'soilmoisture' : float(convertedDict['soilmoisture2']),
         'soilatt' : float(convertedDict['soilatt2']),
+        'id' : timestr + 'sensor' + '2'
     }
 
     sensorDict3 = {
@@ -83,7 +74,8 @@ def str_map_ref(input_str,timestr):
         'eventtime' : str(convertedDict['dateutc']),
         'processingtime' : timestr,
         'soilmoisture' : float(convertedDict['soilmoisture3']),
-        'soilatt' : float(convertedDict['soilatt3']),
+        'soilatt' : float(convertedDict['soilatt3'])
+,       'id' : timestr + 'sensor' + '3'
     }
 
     stationDict = {
@@ -96,7 +88,9 @@ def str_map_ref(input_str,timestr):
         'aromrelin' : float(convertedDict['aromrelin']),
         'aromasin' : float(convertedDict['aromasin']),
         'freq' : str(convertedDict['freq']),
-        'model' : str(convertedDict['model'])
+        'model' : str(convertedDict['model']),
+        'sensors' : ['1','2','3'],
+        'id' : timestr + 'station' + '0'
     }
    
     return stationDict, sensorDict1, sensorDict2, sensorDict3
