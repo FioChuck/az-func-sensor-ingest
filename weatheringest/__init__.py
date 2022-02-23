@@ -7,7 +7,6 @@ import azure.functions as func
 
 def main(mytimer: func.TimerRequest, city: func.Out[func.Document], dt: func.Out[func.Document], description: func.Out[func.Document], outputblob: func.Out[bytes]) -> None:
 
-    logging.info(os.environ['weatherApiKey']) 
 
     url1 = 'http://api.openweathermap.org/data/2.5/weather?id=4180439&appid=' + os.environ['weatherApiKey'] # atlanta
     url2 = 'http://api.openweathermap.org/data/2.5/weather?id=4221552&appid=' + os.environ['weatherApiKey'] # savannah
