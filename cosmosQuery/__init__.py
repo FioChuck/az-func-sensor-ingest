@@ -18,9 +18,9 @@ def main(mytimer: func.TimerRequest) -> None:
     client = CosmosClient(os.environ['cosmosEndPoint'], os.environ['cosmosKey'])
 
     database = client.get_database_client('telemetry')
-    container = database.get_container_client('climate_ref')
+    container = database.get_container_client('openweathermap-description')
 
-    out = container.query_items(query = 'SELECT * FROM c WHERE c.doctype = "station"',populate_query_metrics = True, enable_cross_partition_query = True)
+    out = container.query_items(query = 'SELECT * FROM c WHERE c.weather.description = "clear sky"',populate_query_metrics = True, enable_cross_partition_query = True)
 
     for item in out:
         dflist.append(dict(item))
