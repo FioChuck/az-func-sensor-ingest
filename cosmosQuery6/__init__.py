@@ -21,7 +21,6 @@ def main(mytimer: func.TimerRequest) -> None:
     database = client.get_database_client('telemetry')
     container = database.get_container_client('openweathermap-description')
 
-    # for x in range(10):
     out = container.query_items(query = 'SELECT * FROM c WHERE c.weather.description = "overcast clouds"',populate_query_metrics = True, enable_cross_partition_query = True)
     
     dflist = []
@@ -29,6 +28,21 @@ def main(mytimer: func.TimerRequest) -> None:
         dflist.append(dict(item))
         
     df = pd.DataFrame(dflist)
-    # logging.info('Query Number' + str(x) )
-    logging.info('Query Result Count: ' + str(df.shape) )
+
+    logging.info('Weather Query Result Count: ' + str(df.shape) )
+
+    ########### second query
+    container = database.get_container_client('climate_ref')
+
+    out = container.query_items(query = 'SELECT * FROM c WHERE c.doctype = "sensor"',populate_query_metrics = True, enable_cross_partition_query = True)
+    
+    dflist = []
+    for item in out:
+        dflist.append(dict(item))
+        
+    df = pd.DataFrame(dflist)
+
+    logging.info('IoT Query Result Count: ' + str(df.shape) )
+
+    logging.info('Complete')
     
