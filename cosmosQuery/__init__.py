@@ -13,8 +13,6 @@ def main(mytimer: func.TimerRequest) -> None:
     utc_timestamp = datetime.datetime.utcnow().replace(
         tzinfo=datetime.timezone.utc).isoformat()
 
-    dflist = []
-
 
     logging.info('Python timer trigger function ran at %s', utc_timestamp)
 
@@ -25,7 +23,7 @@ def main(mytimer: func.TimerRequest) -> None:
 
     for x in range(100):
         out = container.query_items(query = 'SELECT * FROM c WHERE c.weather.description = "clear sky"',populate_query_metrics = True, enable_cross_partition_query = True)
-
+        dflist = []
         for item in out:
             dflist.append(dict(item))
             
