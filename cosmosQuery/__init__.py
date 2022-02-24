@@ -21,7 +21,7 @@ def main(mytimer: func.TimerRequest) -> None:
     database = client.get_database_client('telemetry')
     container = database.get_container_client('openweathermap-description')
 
-    for x in range(100):
+    for x in range(10):
         out = container.query_items(query = 'SELECT * FROM c WHERE c.weather.description = "clear sky"',populate_query_metrics = True, enable_cross_partition_query = True)
         dflist = []
         for item in out:
