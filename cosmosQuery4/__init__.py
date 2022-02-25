@@ -42,7 +42,21 @@ def main(mytimer: func.TimerRequest) -> None:
         
     df = pd.DataFrame(dflist)
 
-    logging.info('IoT Query Result Count: ' + str(df.shape) )
+    logging.info('IoT Query1 Result Count: ' + str(df.shape) )
 
     logging.info('Complete')
     
+    ########### third query
+    container = database.get_container_client('climate_emb')
+
+    out = container.query_items(query = 'SELECT * FROM c WHERE c.tempinf > 70',populate_query_metrics = True, enable_cross_partition_query = True)
+    
+    dflist = []
+    for item in out:
+        dflist.append(dict(item))
+        
+    df = pd.DataFrame(dflist)
+
+    logging.info('IoT Query2 Result Count: ' + str(df.shape) )
+
+    logging.info('Complete')
