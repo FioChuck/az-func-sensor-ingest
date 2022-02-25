@@ -49,7 +49,7 @@ def main(mytimer: func.TimerRequest) -> None:
     ########### third query
     container = database.get_container_client('climate_emb')
 
-    out = container.query_items(query = 'SELECT * FROM c WHERE c.tempinf > 70',populate_query_metrics = True, enable_cross_partition_query = True)
+    out = container.query_items(query = 'SELECT * FROM c WHERE c.tempinf < 72.5',populate_query_metrics = True, enable_cross_partition_query = True)
     
     dflist = []
     for item in out:
