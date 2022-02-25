@@ -31,14 +31,14 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
     try:
         for item in output_lst_ref:
             create_items('climate_ref',item)
-            logging.info('Success Writing to Cosmos: ' + item['id'])
+            # logging.info('Success Writing to Cosmos: ' + item['id'])
     except:
         logging.info('Error Writing to Cosmos: ' + item['id'])
 
     try:
         for item in output_lst_emb:
             create_items('climate_emb',item)
-            logging.info('Success Writing to Cosmos: ' + item['id'])
+            # logging.info('Success Writing to Cosmos: ' + item['id'])
     except:
         logging.info('Error Writing to Cosmos: ' + item['id'])
 
